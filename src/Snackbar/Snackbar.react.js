@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved, import/extensions */
 import React, { PropTypes, PureComponent } from 'react';
-import { View, Text, Animated, Easing, Platform, StyleSheet } from 'react-native';
+import { View, Text, Animated, Easing, StyleSheet } from 'react-native';
 
 import Button from '../Button';
 
@@ -127,43 +127,46 @@ class Snackbar extends PureComponent {
     }
 
     show = (bottomNavigation) => {
-        let toValue = 0;
-        if (bottomNavigation) {
-            // TODO: Get bottom navigation height from context.
-            toValue = -56;
-        }
+        const toValue = bottomNavigation ? -56 : 0;
 
-        Animated.timing(this.state.moveAnimated, {
-            toValue,
-            duration: 225,
-            easing: Easing.bezier(0.0, 0.0, 0.2, 1),
-            useNativeDriver: Platform.OS === 'android',
-        }).start();
+        GLOBAL.requestAnimationFrame(() => {
+            Animated.timing(this.state.moveAnimated, {
+                toValue,
+                duration: 225,
+                easing: Easing.bezier(0.0, 0.0, 0.2, 1),
+                useNativeDriver: true,
+            }).start();
+        });
     }
 
     hide = () => {
-        const { moveAnimated, styles } = this.state;
-        Animated.timing(moveAnimated, {
-            toValue: (StyleSheet.flatten(styles.container).height),
-            duration: 195,
-            easing: Easing.bezier(0.4, 0.0, 1, 1),
-            useNativeDriver: Platform.OS === 'android',
-        }).start();
+        GLOBAL.requestAnimationFrame(() => {
+            const { moveAnimated, styles } = this.state;
+
+            Animated.timing(moveAnimated, {
+                toValue: StyleSheet.flatten(styles.container).height,
+                duration: 195,
+                easing: Easing.bezier(0.4, 0.0, 1, 1),
+                useNativeDriver: true,
+            }).start();
+        });
     }
 
     move = (bottomNavigation) => {
-        const { moveAnimated } = this.state;
-        const toValue = bottomNavigation ? -56 : 0;
-        const duration = bottomNavigation ? 225 : 195;
-        const easing = bottomNavigation ?
-          Easing.bezier(0.0, 0.0, 0.2, 1) : Easing.bezier(0.4, 0.0, 0.6, 1);
+        GLOBAL.requestAnimationFrame(() => {
+            const { moveAnimated } = this.state;
+            const toValue = bottomNavigation ? -56 : 0;
+            const duration = bottomNavigation ? 225 : 195;
+            const easing = bottomNavigation ?
+            Easing.bezier(0.0, 0.0, 0.2, 1) : Easing.bezier(0.4, 0.0, 0.6, 1);
 
-        Animated.timing(moveAnimated, {
-            toValue,
-            duration,
-            easing,
-            useNativeDriver: Platform.OS === 'android',
-        }).start();
+            Animated.timing(moveAnimated, {
+                toValue,
+                duration,
+                easing,
+                useNativeDriver: true,
+            }).start();
+        });
     }
 
     renderAction = () => {
