@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved, import/extensions */
 import React, { PropTypes, PureComponent } from 'react';
-import { View, Platform, Animated, Easing, StyleSheet } from 'react-native';
+import { View, Animated, Easing, StyleSheet } from 'react-native';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 import BottomNavigationAction from './BottomNavigationAction.react';
@@ -76,7 +76,7 @@ class BottomNavigation extends PureComponent {
             toValue: 0,
             duration: 225,
             easing: Easing.bezier(0.0, 0.0, 0.2, 1),
-            useNativeDriver: Platform.OS === 'android',
+            useNativeDriver: true,
         }).start();
     }
     hide = () => {
@@ -86,7 +86,7 @@ class BottomNavigation extends PureComponent {
             toValue: StyleSheet.flatten(styles.container).height,
             duration: 195,
             easing: Easing.bezier(0.4, 0.0, 0.6, 1),
-            useNativeDriver: Platform.OS === 'android',
+            useNativeDriver: true,
         }).start();
     }
     render() {
