@@ -7,8 +7,6 @@ import {
     StyleSheet,
     Text,
     View,
-    Platform,
-    Easing,
 } from 'react-native';
 /* eslint-enable import/no-unresolved, import/extensions */
 import LeftElement from './LeftElement.react';
@@ -75,10 +73,6 @@ const propTypes = {
     * This size is used for each icon on the toolbar
     */
     size: PropTypes.number,
-    /**
-    * Wether or not the Toolbar should show
-    */
-    hidden: PropTypes.bool,
     /**
     * Wether or not the Toolbar should show
     */
@@ -225,14 +219,6 @@ class Toolbar extends PureComponent {
                 this.show();
             }
         }
-        // if hidden prop is changed we animate show or hide
-        if (nextProps.hidden !== this.props.hidden) {
-            if (nextProps.hidden === true) {
-                this.hide();
-            } else {
-                this.show();
-            }
-        }
     }
     onSearchOpenRequested = () => {
         this.setState({
@@ -267,16 +253,13 @@ class Toolbar extends PureComponent {
 
         this.setState({ searchValue: value });
     };
-    onSearchPressed = () => {
-        const { searchable } = this.props;
-
-        // on android it's typical that back button closes search input on toolbar
-        this.backButtonListener = addBackButtonListener(this.onSearchCloseRequested);
-
-        if (searchable && isFunction(searchable.onSearchPressed)) {
-            searchable.onSearchPressed();
-        }
-
+    onSearchClearRequested = () => {
+        this.onSearchTextChanged('');
+    }
+    /**
+    * Android's HW/SW back button
+    */
+    onSearchCloseRequested = () => {
         this.setState({
             isSearchActive: false,
             searchValue: '',
