@@ -399,7 +399,13 @@ class ActionButton extends PureComponent {
         );
     }
     renderButton = styles => (
-        <Animated.View style={styles.positionContainer}>
+        <Animated.View
+            style={[styles.positionContainer, {
+                transform: [{
+                    scale: this.state.scaleValue,
+                }],
+            }]}
+        >
             {this.renderMainButton(styles)}
         </Animated.View>
     );
