@@ -34,7 +34,10 @@ const propTypes = {
     /**
     * If specified it'll be shown before text
     */
-    icon: PropTypes.string,
+    icon: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.element,
+    ]),
     /**
     * You can overide any style for this button
     */
@@ -56,7 +59,14 @@ const contextTypes = {
 };
 
 function getStyles(props, context, state) {
-    const { button, buttonFlat, buttonDisabled, buttonRaised } = context.uiTheme;
+    const {
+        button,
+        buttonFlat,
+        buttonRaised,
+        buttonDisabled,
+        buttonRaisedDisabled,
+    } = context.uiTheme;
+
     const { primary, accent, disabled, raised } = props;
     const { palette } = context.uiTheme;
 
@@ -64,21 +74,23 @@ function getStyles(props, context, state) {
         container: {},
     };
 
-    if (primary && !raised) {
-        local.text = { color: palette.primaryColor };
-    } else if (accent && !raised) {
-        local.text = { color: palette.accentColor };
+    if (!disabled) {
+        if (primary && !raised) {
+            local.text = { color: palette.primaryColor };
+        } else if (accent && !raised) {
+            local.text = { color: palette.accentColor };
+        }
+
+        if (primary && raised) {
+            local.container.backgroundColor = palette.primaryColor;
+            local.text = { color: palette.canvasColor };
+        } else if (accent && raised) {
+            local.container.backgroundColor = palette.accentColor;
+            local.text = { color: palette.canvasColor };
+        }
     }
 
-    if (primary && raised) {
-        local.container.backgroundColor = palette.primaryColor;
-        local.text = { color: palette.canvasColor };
-    } else if (accent && raised) {
-        local.container.backgroundColor = palette.accentColor;
-        local.text = { color: palette.canvasColor };
-    }
-
-    if (raised) {
+    if (raised && !disabled) {
         local.container = {
             ...local.container,
             ...getPlatformElevation(state.elevation),
@@ -89,18 +101,28 @@ function getStyles(props, context, state) {
         container: [
             button.container,
             !raised && buttonFlat.container,
-            disabled && buttonDisabled.container,
             raised && buttonRaised.container,
+            (!raised && disabled) && buttonDisabled.container,
+            (raised && disabled) && buttonRaisedDisabled.container,
             local.container,
             props.style.container,
         ],
         text: [
             button.text,
             !raised && buttonFlat.text,
-            disabled && buttonDisabled.text,
             raised && buttonRaised.text,
+            (!raised && disabled) && buttonDisabled.text,
+            (raised && disabled) && buttonRaisedDisabled.text,
             local.text,
             props.style.text,
+        ],
+        icon: [
+            button.icon,
+            !raised && buttonFlat.icon,
+            disabled && buttonDisabled.icon,
+            raised && buttonRaised.icon,
+            local.icon,
+            props.style.icon,
         ],
     };
 }
@@ -138,15 +160,21 @@ class Button extends PureComponent {
             return null;
         }
 
+        let result;
 
-        return (
-            <Icon
-                name={icon}
-                color={textFlatten.color}
-                style={{ marginRight: 8 }}
-                size={24}
-            />
-        );
+        if (React.isValidElement(icon)) {
+            result = icon;
+        } else if (typeof icon === 'string') {
+            result = (
+                <Icon
+                    name={icon}
+                    color={textFlatten.color}
+                    style={styles.icon}
+                    size={24}
+                />);
+        }
+
+        return result;
     }
     render() {
         const { text, disabled, raised, upperCase, onLongPress } = this.props;

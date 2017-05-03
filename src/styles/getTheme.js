@@ -121,6 +121,15 @@ export default function getTheme(theme, ...more) {
                 justifyContent: 'center',
                 backgroundColor: palette.primaryColor,
             },
+            strokeContainer: {
+                position: 'absolute',
+                width: 16,
+                height: 16,
+                borderRadius: 8,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: palette.canvasColor,
+            },
             content: {
                 color: palette.canvasColor,
                 fontWeight: fontWeight.medium,
@@ -140,19 +149,30 @@ export default function getTheme(theme, ...more) {
                 color: black,
                 ...typography.buttons,
             },
+            icon: {
+                marginRight: 8,
+            },
         }, theme.button)),
         buttonFlat: StyleSheet.create(merge({}, theme.buttonFlat)),
+        buttonDisabled: StyleSheet.create(merge({
+            text: {
+                color: palette.disabledTextColor,
+            },
+        }, theme.buttonDisabled)),
         buttonRaised: StyleSheet.create(merge({
             container: {
                 backgroundColor: '#fff',
                 borderColor: 'rgba(0,0,0,.12)',
             },
         }, theme.buttonRaised)),
-        buttonDisabled: StyleSheet.create(merge({
+        buttonRaisedDisabled: StyleSheet.create(merge({
+            container: {
+                backgroundColor: palette.borderColor,
+            },
             text: {
                 color: palette.disabledTextColor,
             },
-        }, theme.buttonDisabled)),
+        }, theme.buttonRaisedDisabled)),
         bottomNavigation: StyleSheet.create(merge({
             container: {
                 flexDirection: 'row',
@@ -213,6 +233,7 @@ export default function getTheme(theme, ...more) {
                 paddingBottom: 20,
             },
             titleText: {
+                fontFamily,
                 fontSize: 20,
                 fontWeight: 'bold',
                 color: 'black',
@@ -387,6 +408,11 @@ export default function getTheme(theme, ...more) {
                 color: palette.secondaryTextColor,
                 ...typography.body1,
             },
+            tertiaryText: {
+                lineHeight: 22,
+                color: palette.secondaryTextColor,
+                ...typography.body1,
+            },
             rightElementContainer: {
                 paddingRight: 4,
             },
@@ -443,6 +469,7 @@ export default function getTheme(theme, ...more) {
                 flexDirection: 'row',
                 alignItems: 'center',
                 paddingHorizontal: 4,
+                overflow: 'hidden',
                 ...getPlatformElevation(4),
             },
             leftElementContainer: { },
@@ -454,6 +481,7 @@ export default function getTheme(theme, ...more) {
                 marginLeft: 20,
             },
             titleText: {
+                fontFamily,
                 color: palette.alternateTextColor,
                 ...typography.appBar,
             },
@@ -473,6 +501,7 @@ export default function getTheme(theme, ...more) {
             },
             centerElementContainer: { },
             titleText: {
+                fontFamily,
                 flex: 1,
                 marginLeft: 16,
                 color: palette.primaryTextColor,
