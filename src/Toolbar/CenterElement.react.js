@@ -96,7 +96,7 @@ class CenterElement extends PureComponent {
                     onChangeText={onSearchTextChange}
                     onSubmitEditing={searchable.onSubmitEditing}
                     placeholder={searchable.placeholder}
-                    style={[styles.titleText, { marginLeft: 0 }]}
+                    style={[styles.titleText, { marginLeft: 0, textAlign: 'center' }]}
                     underlineColorAndroid="transparent"
                     value={searchValue}
                 />
