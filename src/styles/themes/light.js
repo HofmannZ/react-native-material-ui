@@ -12,7 +12,7 @@ import typography from '../typography';
 export default {
     spacing,
     typography,
-    fontFamily: 'Roboto',
+    fontFamily: 'System',
     palette: {
         // main theme colors
         primaryColor: blue500,
@@ -32,6 +32,5 @@ export default {
         // pickerHeaderColor: cyan500,
         // clockCircleColor: faintBlack,
         // shadowColor: fullBlack,
-
     },
 };
