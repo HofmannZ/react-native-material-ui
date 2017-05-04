@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/xotahal/react-native-material-ui",
   "peerDependencies": {
-    "react-native-vector-icons": "^4.0.0"
+    "react-native-vector-icons": "^4.1.0"
   },
   "dependencies": {
     "color": "^1.0.3",
