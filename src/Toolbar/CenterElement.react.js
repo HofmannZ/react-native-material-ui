@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved, import/extensions */
 import React, { PureComponent, PropTypes } from 'react';
-import { Animated, TouchableWithoutFeedback, Text, TextInput, Easing, Platform } from 'react-native';
+import { Animated, TouchableWithoutFeedback, Text, TextInput, Easing } from 'react-native';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 const propTypes = {
@@ -56,7 +56,7 @@ class CenterElement extends PureComponent {
             toValue: 0,
             duration: 112,
             easing: Easing.linear,
-            useNativeDriver: Platform.OS === 'android',
+            useNativeDriver: true,
         }).start(() => {
             this.setState({
                 isSearchActive: nextIsSearchActive,
@@ -66,7 +66,7 @@ class CenterElement extends PureComponent {
                 toValue: 1,
                 duration: 112,
                 easing: Easing.linear,
-                useNativeDriver: Platform.OS === 'android',
+                useNativeDriver: true,
             }).start();
         });
     }

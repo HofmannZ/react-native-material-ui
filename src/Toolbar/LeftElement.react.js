@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved, import/extensions */
 import React, { PureComponent, PropTypes } from 'react';
-import { Animated, Easing, Platform, StyleSheet } from 'react-native';
+import { Animated, Easing, StyleSheet } from 'react-native';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 import IconToggle from '../IconToggle';
@@ -82,7 +82,7 @@ class LeftElement extends PureComponent {
             toValue: 0.5,
             duration: 112,
             easing: Easing.linear,
-            useNativeDriver: Platform.OS === 'android',
+            useNativeDriver: true,
         }).start(() => {
             let leftElement = activate ? SEARCH_FORWARD_ICON : this.props.leftElement;
 
@@ -97,7 +97,7 @@ class LeftElement extends PureComponent {
                 toValue,
                 duration: 112,
                 easing: Easing.linear,
-                useNativeDriver: Platform.OS === 'android',
+                useNativeDriver: true,
             }).start();
         });
     }
