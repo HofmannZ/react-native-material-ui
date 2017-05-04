@@ -87,15 +87,23 @@ class CenterElement extends PureComponent {
         let content = null;
 
         if (isSearchActive) {
-            content = (
+            content = typeof searchable === 'object' ? (
                 <TextInput
                     ref={(ref) => { this.searchFieldRef = ref; }}
-                    autoFocus={searchable.autoFocus || false}
-                    autoCapitalize={searchable.autoCapitalize || false}
-                    autoCorrect={searchable.autoCorrect || false}
+                    autoFocus={searchable.autoFocus}
+                    autoCapitalize={searchable.autoCapitalize}
+                    autoCorrect={searchable.autoCorrect}
                     onChangeText={onSearchTextChange}
-                    onSubmitEditing={searchable.onSubmitEditing || (() => {})}
-                    placeholder={searchable.placeholder || 'Search'}
+                    onSubmitEditing={searchable.onSubmitEditing}
+                    placeholder={searchable.placeholder}
+                    style={[styles.titleText, { textAlign: 'center' }]}
+                    underlineColorAndroid="transparent"
+                    value={searchValue}
+                />
+            ) : (
+                <TextInput
+                    ref={(ref) => { this.searchFieldRef = ref; }}
+                    onChangeText={onSearchTextChange}
                     style={[styles.titleText, { textAlign: 'center' }]}
                     underlineColorAndroid="transparent"
                     value={searchValue}
