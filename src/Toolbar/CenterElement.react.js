@@ -90,12 +90,12 @@ class CenterElement extends PureComponent {
             content = (
                 <TextInput
                     ref={(ref) => { this.searchFieldRef = ref; }}
-                    autoFocus={searchable.autoFocus}
-                    autoCapitalize={searchable.autoCapitalize}
-                    autoCorrect={searchable.autoCorrect}
+                    autoFocus={searchable.autoFocus || false}
+                    autoCapitalize={searchable.autoCapitalize || false}
+                    autoCorrect={searchable.autoCorrect || false}
                     onChangeText={onSearchTextChange}
-                    onSubmitEditing={searchable.onSubmitEditing}
-                    placeholder={searchable.placeholder}
+                    onSubmitEditing={searchable.onSubmitEditing || (() => {})}
+                    placeholder={searchable.placeholder || 'Search'}
                     style={[styles.titleText, { textAlign: 'center' }]}
                     underlineColorAndroid="transparent"
                     value={searchValue}
