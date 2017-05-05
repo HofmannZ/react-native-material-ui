@@ -136,19 +136,19 @@ class RightElement extends PureComponent {
             if (isSearchActive) {
                 // clear result to hide other icons
                 result = [];
-
-                if (searchValue.length > 0) {
-                    result.push(
-                        <IconToggle
-                            key="searchClear"
-                            name="clear"
-                            color={flattenRightElement.color}
-                            size={size}
-                            style={flattenRightElement}
-                            onPress={onSearchClearRequest}
-                        />,
-                    );
-                }
+                result.push(
+                    <IconToggle
+                        key="searchClear"
+                        name="clear"
+                        color={flattenRightElement.color}
+                        size={size}
+                        style={{
+                            ...flattenRightElement,
+                            opacity: (searchValue.length > 0) ? 1 : 0,
+                        }}
+                        onPress={(searchValue.length > 0) ? onSearchClearRequest : (() => {})}
+                    />,
+                );
             } else {
                 result.push(
                     <IconToggle
