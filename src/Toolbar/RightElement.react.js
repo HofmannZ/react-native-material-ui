@@ -104,32 +104,6 @@ class RightElement extends PureComponent {
 
         const flattenRightElement = StyleSheet.flatten(styles.rightElement);
 
-        if (actionsMap) {
-            result = actionsMap.map((action, index) => {
-                if (React.isValidElement(action)) {
-                    return action;
-                }
-
-                return (
-                    <IconToggle
-                        key={index}
-                        name={action}
-                        color={flattenRightElement.color}
-                        size={size}
-                        style={flattenRightElement}
-                        onPress={() =>
-                            onRightElementPress && onRightElementPress({ action, index })
-                        }
-                    />
-                );
-            });
-        }
-
-        if (React.isValidElement(rightElement)) {
-            result.push(React.cloneElement(rightElement, { key: 'customRightElement' }));
-        }
-
-
         // if searchable feature is on and search is active with some text, then we show clear
         // button, to be able to clear text
         if (searchable) {
@@ -159,6 +133,31 @@ class RightElement extends PureComponent {
                     />,
                 );
             }
+        }
+
+        if (actionsMap) {
+            result = actionsMap.map((action, index) => {
+                if (React.isValidElement(action)) {
+                    return action;
+                }
+
+                return (
+                    <IconToggle
+                        key={index}
+                        name={action}
+                        color={flattenRightElement.color}
+                        size={size}
+                        style={flattenRightElement}
+                        onPress={() =>
+                            onRightElementPress && onRightElementPress({ action, index })
+                        }
+                    />
+                );
+            });
+        }
+
+        if (React.isValidElement(rightElement)) {
+            result.push(React.cloneElement(rightElement, { key: 'customRightElement' }));
         }
 
         if (rightElement && rightElement.menu && !isSearchActive) {
