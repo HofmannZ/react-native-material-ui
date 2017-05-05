@@ -6,7 +6,10 @@ import { Animated, TouchableWithoutFeedback, Text, TextInput, Easing } from 'rea
 const propTypes = {
     isSearchActive: PropTypes.bool.isRequired,
     searchValue: PropTypes.string.isRequired,
-    searchable: PropTypes.object,
+    searchable: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool,
+    ]),
     style: PropTypes.object,
     centerElement: PropTypes.node,
     onPress: PropTypes.func,

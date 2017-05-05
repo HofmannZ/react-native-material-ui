@@ -23,40 +23,43 @@ const propTypes = {
     /**
     * When you want to activate search feature you have to pass this object with config of search.
     */
-    searchable: PropTypes.shape({
-        /**
-        * Called when search text was changed.
-        */
-        onChangeText: PropTypes.func,
-        /**
-        * Called when search was closed.
-        */
-        onSearchClosed: PropTypes.func,
-        /**
-        * Called when search was opened.
-        */
-        onSearchPressed: PropTypes.func,
-        /**
-        * Called when user press submit button on hw keyboard
-        */
-        onSubmitEditing: PropTypes.func,
-        /**
-        * Will shown as placeholder for search input.
-        */
-        placeholder: PropTypes.string,
-        /**
-        * Indicates when input should be focused after the search is opened.
-        */
-        autoFocus: PropTypes.bool,
-        /**
-        * Enable auto-capitalize for search input
-        */
-        autoCapitalize: PropTypes.string,
-        /**
-        * Enable auto-correct for search input
-        */
-        autoCorrect: PropTypes.bool,
-    }),
+    searchable: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.shape({
+            /**
+            * Called when search text was changed.
+            */
+            onChangeText: PropTypes.func,
+            /**
+            * Called when search was closed.
+            */
+            onSearchClosed: PropTypes.func,
+            /**
+            * Called when search was opened.
+            */
+            onSearchPressed: PropTypes.func,
+            /**
+            * Called when user press submit button on hw keyboard
+            */
+            onSubmitEditing: PropTypes.func,
+            /**
+            * Will shown as placeholder for search input.
+            */
+            placeholder: PropTypes.string,
+            /**
+            * Indicates when input should be focused after the search is opened.
+            */
+            autoFocus: PropTypes.bool,
+            /**
+            * Enable auto-capitalize for search input
+            */
+            autoCapitalize: PropTypes.string,
+            /**
+            * Enable auto-correct for search input
+            */
+            autoCorrect: PropTypes.bool,
+        }),
+    ]),
     /**
     * You can overide any style for the component via this prop
     */

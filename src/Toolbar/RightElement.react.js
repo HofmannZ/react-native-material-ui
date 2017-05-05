@@ -11,7 +11,10 @@ const UIManager = NativeModules.UIManager;
 const propTypes = {
     isSearchActive: PropTypes.bool.isRequired,
     searchValue: PropTypes.string.isRequired,
-    searchable: PropTypes.object,
+    searchable: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool,
+    ]),
     style: PropTypes.object,
     size: PropTypes.number,
     rightElement: PropTypes.any,

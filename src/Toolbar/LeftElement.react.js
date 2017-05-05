@@ -7,7 +7,10 @@ import IconToggle from '../IconToggle';
 
 const propTypes = {
     isSearchActive: PropTypes.bool.isRequired,
-    searchable: PropTypes.object,
+    searchable: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool,
+    ]),
     style: PropTypes.object,
     size: PropTypes.number,
     leftElement: PropTypes.node,
