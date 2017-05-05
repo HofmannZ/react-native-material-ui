@@ -140,12 +140,10 @@ class RightElement extends PureComponent {
                     <IconToggle
                         key="searchClear"
                         name="clear"
-                        color={flattenRightElement.color}
+                        color={(searchValue.length > 0) ?
+                          flattenRightElement.color : 'rgba(0, 0, 0, 0)'}
                         size={size}
-                        style={{
-                            ...flattenRightElement,
-                            opacity: (searchValue.length > 0) ? 1 : 0,
-                        }}
+                        style={flattenRightElement}
                         onPress={(searchValue.length > 0) ? onSearchClearRequest : (() => {})}
                     />,
                 );
