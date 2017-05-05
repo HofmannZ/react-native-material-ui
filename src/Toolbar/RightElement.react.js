@@ -104,27 +104,6 @@ class RightElement extends PureComponent {
 
         const flattenRightElement = StyleSheet.flatten(styles.rightElement);
 
-        if (actionsMap) {
-            result = actionsMap.map((action, index) => {
-                if (React.isValidElement(action)) {
-                    return action;
-                }
-
-                return (
-                    <IconToggle
-                        key={index}
-                        name={action}
-                        color={flattenRightElement.color}
-                        size={size}
-                        style={flattenRightElement}
-                        onPress={() =>
-                            onRightElementPress && onRightElementPress({ action, index })
-                        }
-                    />
-                );
-            });
-        }
-
         // if searchable feature is on and search is active with some text, then we show clear
         // button, to be able to clear text
         if (searchable) {
@@ -160,10 +139,32 @@ class RightElement extends PureComponent {
             result.push(React.cloneElement(rightElement, { key: 'customRightElement' }));
         }
 
+        if (actionsMap) {
+            result = actionsMap.map((action, index) => {
+                if (React.isValidElement(action)) {
+                    return action;
+                }
+
+                return (
+                    <IconToggle
+                        key={index}
+                        name={action}
+                        color={flattenRightElement.color}
+                        size={size}
+                        style={flattenRightElement}
+                        onPress={() =>
+                            onRightElementPress && onRightElementPress({ action, index })
+                        }
+                    />
+                );
+            });
+        }
+
         if (rightElement && rightElement.menu && !isSearchActive) {
             result.push(
                 <View key="menuIcon">
-                    {/* We need this view as an anchor for drop down menu. findNodeHandle can
+                    {/*
+                        We need this view as an anchor for drop down menu. findNodeHandle can
                         find just view with width and height, even it needs backgroundColor :/
                     */}
                     <View
