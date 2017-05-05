@@ -140,7 +140,7 @@ class RightElement extends PureComponent {
         }
 
         if (actionsMap) {
-            result = actionsMap.map((action, index) => {
+            result.push(actionsMap.map((action, index) => {
                 if (React.isValidElement(action)) {
                     return action;
                 }
@@ -157,7 +157,7 @@ class RightElement extends PureComponent {
                         }
                     />
                 );
-            });
+            }));
         }
 
         if (rightElement && rightElement.menu && !isSearchActive) {
