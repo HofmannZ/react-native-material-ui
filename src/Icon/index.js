@@ -14,10 +14,26 @@ const contextTypes = {
     uiTheme: PropTypes.object.isRequired,
 };
 
+function getStyles(props, context) {
+    const { icon } = context.uiTheme;
+
+    const local = {};
+
+    return {
+        icon: [
+            icon,
+            local,
+            props.style,
+        ],
+    };
+}
+
 class Icon extends PureComponent {
     render() {
-        const { name, style, size, color } = this.props;
+        const { name, size, color } = this.props;
         const { palette, spacing } = this.context.uiTheme;
+
+        const styles = getStyles(this.props, this.context);
 
         const iconColor = color || palette.secondaryTextColor;
         const iconSize = size || spacing.iconSize;
@@ -27,7 +43,7 @@ class Icon extends PureComponent {
                 name={name}
                 size={iconSize}
                 color={iconColor}
-                style={style}
+                style={styles}
             />
         );
     }

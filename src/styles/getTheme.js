@@ -95,6 +95,7 @@ export default function getTheme(theme, ...more) {
             },
             icon: {
                 color: white,
+                backgroundColor: 'transparent',
             },
         }, theme.actionButton)),
         // https://material.google.com/layout/metrics-keylines.html#metrics-keylines-touch-target-size
@@ -362,6 +363,10 @@ export default function getTheme(theme, ...more) {
                 color: palette.primaryColor,
             },
         }, theme.drawerSectionActiveItem)),
+        icon: StyleSheet.create(merge({
+            color: palette.secondaryTextColor,
+            backgroundColor: 'transparent',
+        }, theme.icon)),
         iconToggle: StyleSheet.create(merge({
             container: {
                 width: spacing.iconSize * 2,
