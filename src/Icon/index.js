@@ -43,6 +43,7 @@ class Icon extends PureComponent {
         const iconSize = size || spacing.iconSize;
 
         if ('color' in iconStyles) {
+            alert(iconStyles.color);
             iconColor = iconStyles.color;
         }
 
