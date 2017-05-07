@@ -37,8 +37,12 @@ class Icon extends PureComponent {
 
         const styles = getStyles(this.props, this.context);
 
-        const iconColor = color || palette.secondaryTextColor;
+        let iconColor = color || palette.secondaryTextColor;
         const iconSize = size || spacing.iconSize;
+
+        if ('color' in styles.icon) {
+            iconColor = styles.icon.color;
+        }
 
         return (
             <VectorIcon
