@@ -95,7 +95,6 @@ export default function getTheme(theme, ...more) {
             },
             icon: {
                 color: white,
-                backgroundColor: 'transparent',
             },
         }, theme.actionButton)),
         // https://material.google.com/layout/metrics-keylines.html#metrics-keylines-touch-target-size

@@ -291,7 +291,6 @@ class ActionButton extends PureComponent {
         return (
             <View key="main-button" style={styles.container}>
                 <RippleFeedback
-                    color="#AAF"
                     onPress={() => this.onPress('main-button')}
                     onLongPress={onLongPress}
                     onPressIn={() => this.setState({ elevation: 4 })}
