@@ -364,8 +364,10 @@ export default function getTheme(theme, ...more) {
             },
         }, theme.drawerSectionActiveItem)),
         icon: StyleSheet.create(merge({
-            color: palette.secondaryTextColor,
-            backgroundColor: 'transparent',
+            icon: {
+                color: palette.secondaryTextColor,
+                backgroundColor: 'transparent',
+            },
         }, theme.icon)),
         iconToggle: StyleSheet.create(merge({
             container: {

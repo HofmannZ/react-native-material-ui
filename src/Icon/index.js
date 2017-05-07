@@ -21,9 +21,9 @@ function getStyles(props, context) {
 
     return {
         icon: [
-            icon,
-            local,
-            props.style,
+            icon.icon,
+            local.icon,
+            props.style.icon,
         ],
     };
 }
