@@ -45,7 +45,7 @@ class Icon extends PureComponent {
                 name={name}
                 size={iconSize}
                 color={iconColor}
-                style={styles}
+                style={styles.icon}
             />
         );
     }
