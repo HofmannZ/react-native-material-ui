@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unresolved, import/extensions */
 import VectorIcon from 'react-native-vector-icons/MaterialIcons';
 import React, { PureComponent, PropTypes } from 'react';
+import { StyleSheet } from 'react-native';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 const propTypes = {
@@ -36,12 +37,13 @@ class Icon extends PureComponent {
         const { palette, spacing } = this.context.uiTheme;
 
         const styles = getStyles(this.props, this.context);
+        const iconStyles = StyleSheet.flatten(styles.icon);
 
         let iconColor = color || palette.secondaryTextColor;
         const iconSize = size || spacing.iconSize;
 
-        if ('color' in styles.icon) {
-            iconColor = styles.icon.color;
+        if ('color' in iconStyles) {
+            iconColor = iconStyles.color;
         }
 
         return (
@@ -49,7 +51,7 @@ class Icon extends PureComponent {
                 name={name}
                 size={iconSize}
                 color={iconColor}
-                style={styles.icon}
+                style={iconStyles}
             />
         );
     }
