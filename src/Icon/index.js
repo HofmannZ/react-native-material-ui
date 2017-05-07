@@ -9,7 +9,9 @@ const propTypes = {
     size: PropTypes.number,
     color: PropTypes.string,
 };
-const defaultProps = { };
+const defaultProps = {
+    style: {},
+};
 const contextTypes = {
     uiTheme: PropTypes.object.isRequired,
 };
