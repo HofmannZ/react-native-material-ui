@@ -389,7 +389,13 @@ class ActionButton extends PureComponent {
         if (React.isValidElement(icon)) {
             result = icon;
         } else {
-            result = <Icon name={icon} style={styles.icon} />;
+            result = (
+                <Icon
+                    name={icon}
+                    style={styles.icon}
+                    color={styles.icon.color || null}
+                />
+            );
         }
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
