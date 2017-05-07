@@ -478,7 +478,6 @@ export default function getTheme(theme, ...more) {
             },
             centerElementContainer: {
                 flex: 1,
-                marginLeft: 20,
             },
             titleText: {
                 fontFamily,
@@ -498,6 +497,7 @@ export default function getTheme(theme, ...more) {
             },
             leftElement: {
                 color: palette.secondaryTextColor,
+                backgroundColor: 'transparent',
             },
             centerElementContainer: { },
             titleText: {
@@ -509,6 +509,7 @@ export default function getTheme(theme, ...more) {
             },
             rightElement: {
                 color: palette.secondaryTextColor,
+                backgroundColor: 'transparent',
             },
         }, theme.toolbarSearchActive)),
     }, baseTheme);
