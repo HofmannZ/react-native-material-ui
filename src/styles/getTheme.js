@@ -365,7 +365,6 @@ export default function getTheme(theme, ...more) {
         }, theme.drawerSectionActiveItem)),
         icon: StyleSheet.create(merge({
             icon: {
-                color: palette.secondaryTextColor,
                 backgroundColor: 'transparent',
             },
         }, theme.icon)),
