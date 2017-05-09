@@ -59,12 +59,12 @@ const propTypes = {
     * You can overide any style for the component via this prop
     */
     style: PropTypes.shape({
-        container: Animated.View.propTypes.style,
-        leftElementContainer: View.propTypes.style,
+        container: Animated.ViewPropTypes.style,
+        leftElementContainer: ViewPropTypes.style,
         leftElement: Text.propTypes.style,
-        centerElementContainer: Animated.View.propTypes.style,
+        centerElementContainer: Animated.ViewPropTypes.style,
         titleText: Text.propTypes.style,
-        rightElementContainer: View.propTypes.style,
+        rightElementContainer: ViewPropTypes.style,
         rightElement: Text.propTypes.style,
     }),
     /**

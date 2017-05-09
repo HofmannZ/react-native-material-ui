@@ -8,6 +8,7 @@ import {
     TouchableWithoutFeedback,
     Animated,
     Easing,
+    ViewPropTypes,
 } from 'react-native';
 /* eslint-enable import/no-unresolved, import/extensions */
 import Icon from '../Icon';
@@ -57,7 +58,7 @@ const propTypes = {
     * You can overide any style for this button
     */
     style: PropTypes.shape({
-        container: View.propTypes.style,
+        container: ViewPropTypes.style,
         icon: Text.propTypes.style,
     }),
 };

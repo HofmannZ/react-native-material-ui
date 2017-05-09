@@ -48,7 +48,7 @@ const propTypes = {
     * Inline style of avatar
     */
     style: PropTypes.shape({
-        container: View.propTypes.style,
+        container: ViewPropTypes.style,
         content: Text.propTypes.style,
     }),
 };

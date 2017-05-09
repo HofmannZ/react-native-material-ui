@@ -64,7 +64,7 @@ const propTypes = {
     * Inline style of bottom navigation
     */
     style: PropTypes.shape({
-        container: View.propTypes.style,
+        container: ViewPropTypes.style,
         active: Text.propTypes.style,
         disabled: Text.propTypes.style,
     }),
