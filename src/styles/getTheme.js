@@ -227,10 +227,10 @@ export default function getTheme(theme, ...more) {
                 ...getPlatformElevation(24),
                 width: 280,
                 paddingTop: 24,
-                paddingHorizontal: 24,
             },
             titleContainer: {
                 paddingBottom: 20,
+                paddingHorizontal: 24,
             },
             titleText: {
                 fontFamily,
@@ -240,18 +240,19 @@ export default function getTheme(theme, ...more) {
             },
             contentContainer: {
                 paddingBottom: 24,
+                paddingHorizontal: 24,
             },
-            // TODO: merge actionsContainer with actionsInnerContainer
             actionsContainer: {
-                height: 56,
-                alignItems: 'flex-end',
-                justifyContent: 'center',
-            },
-            actionsInnerContainer: {
-                margin: 8,
             },
             defaultActionsContainer: {
+                marginHorizontal: 8,
+                height: 52,
                 flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'flex-end',
+            },
+            stackedActionsContainer: {
+                marginBottom: 8,
             },
         }, theme.dialog)),
         checkbox: StyleSheet.create(merge({
@@ -420,6 +421,8 @@ export default function getTheme(theme, ...more) {
             },
             rightElementContainer: {
                 paddingRight: 4,
+                flexDirection: 'row',
+                backgroundColor: 'transparent',
             },
             leftElement: {
                 margin: 16,
